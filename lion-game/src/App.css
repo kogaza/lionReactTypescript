@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+.grid-container {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  border: 1px solid orange;
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+}
+
+.board {
+  height: 400px;
+  align-self: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto auto;
+}
+
+.waiting-room {
+  height: 300px;
+  border: 1px solid blue;
+}
+
+.team-a {
+  align-self: start;
+}
+
+.team-b {
+  align-self: end;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
+}
+
