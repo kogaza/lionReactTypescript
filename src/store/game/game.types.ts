@@ -5,6 +5,8 @@ export interface GameSettingsToAdd {
 export interface CellConfig {
     name: string;
     color: string;
+    animal: string;
+    teamName: string;
 }
 
 export const START_GAME_LOADING = 'START_GAME_LOADING';
