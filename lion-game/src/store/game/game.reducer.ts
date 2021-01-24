@@ -1,17 +1,26 @@
-import { GameActionTypes, SET_GAME_SETTINGS, START_GAME_LOADING, STOP_GAME_LOADING } from "./game.types";
+import {
+    GameActionTypes,
+    CellConfig,
+    SET_GAME_SETTINGS,
+    START_GAME_LOADING,
+    STOP_GAME_LOADING,
+    SET_CELLS_CONFIG
+} from "./game.types";
 
 export interface GameState {
     isLoading: boolean;
     settings: {
         name: string;
-    }
+    };
+    cellsConfig: CellConfig[];
 }
 
 export const initialGameState = {
     isLoading: false,
     settings: {
         name: '',
-    }
+    },
+    cellsConfig: [],
 }
 
 export const gameReducer = (state: GameState = initialGameState, action: GameActionTypes) => {
@@ -34,6 +43,13 @@ export const gameReducer = (state: GameState = initialGameState, action: GameAct
             return {
                 ...state,
                 settings: action.payload,
+            }
+        }
+
+        case SET_CELLS_CONFIG: {
+            return {
+                ...state,
+                cellsConfig: action.payload,
             }
         }
 

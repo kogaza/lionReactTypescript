@@ -2,6 +2,11 @@ export interface GameSettingsToAdd {
     name: string;
 }
 
+export interface CellConfig {
+    name: string;
+    color: string;
+}
+
 export const START_GAME_LOADING = 'START_GAME_LOADING';
 export interface StartGameLoadingAction {
     type: typeof START_GAME_LOADING;
@@ -18,7 +23,14 @@ export interface SetGameSettingsAction {
     payload: GameSettingsToAdd;
 }
 
+export const SET_CELLS_CONFIG = 'SET_CELLS_CONFIG';
+export interface SetCellsConfigAction {
+    type: typeof SET_CELLS_CONFIG;
+    payload: CellConfig[];
+}
+
 export type GameActionTypes =
     StartGameLoadingAction |
     StopGameLoadingAction |
-    SetGameSettingsAction;
+    SetGameSettingsAction |
+    SetCellsConfigAction;
