@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCellsConfigAction } from "../store/game/game.actions";
+import { setCellsConfig } from "../store/game/game.actions";
 import { getCells, getSelectedCell } from "../store/game/game.selectors";
 
 export const useUpdateBoard = (lastUpdate: number) => {
@@ -18,7 +18,7 @@ export const useUpdateBoard = (lastUpdate: number) => {
                 }
             )
         });
-        dispatch(setCellsConfigAction(currentBoard));
+        dispatch(setCellsConfig(currentBoard));
     }
 
     useEffect(() => {

@@ -44,10 +44,17 @@ export interface SetLastUpdateAction {
     payload: number;
 }
 
+export const SET_IS_BLUE_MOVE = 'SET_IS_BLUE_MOVE';
+export interface SetIsBlueMoveAction {
+    type: typeof SET_IS_BLUE_MOVE;
+    payload: boolean;
+}
+
 export type GameActionTypes =
     StartGameLoadingAction |
     StopGameLoadingAction |
     SetGameSettingsAction |
     SetCellsConfigAction |
     SetSelectedCellAction |
-    SetLastUpdateAction;
+    SetLastUpdateAction |
+    SetIsBlueMoveAction;

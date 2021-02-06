@@ -8,11 +8,13 @@ import {
     STOP_GAME_LOADING,
     SET_CELLS_CONFIG,
     SET_LAST_UPDATE,
-    SET_SELECTED_CELL
+    SET_SELECTED_CELL,
+    SET_IS_BLUE_MOVE
 } from "./game.types";
 
 export interface GameState {
     isLoading: boolean;
+    isBlueMove: boolean;
     settings: {
         name: string;
     };
@@ -23,6 +25,7 @@ export interface GameState {
 
 export const initialGameState = {
     isLoading: false,
+    isBlueMove: false,
     settings: {
         name: '',
     },
@@ -72,6 +75,13 @@ export const gameReducer = (state: GameState = initialGameState, action: GameAct
             return {
                 ...state,
                 lastUpdate: action.payload,
+            };
+        }
+
+        case SET_IS_BLUE_MOVE: {
+            return {
+                ...state,
+                isBlueMove: action.payload,
             };
         }
 

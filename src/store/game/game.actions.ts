@@ -13,6 +13,8 @@ import {
     SetCellsConfigAction,
     SetLastUpdateAction,
     SetSelectedCellAction,
+    SetIsBlueMoveAction,
+    SET_IS_BLUE_MOVE,
 } from "./game.types";
 
 export const startGameLoading = (): StartGameLoadingAction => ({
@@ -30,14 +32,14 @@ export const setGameSettings = (settings: GameSettingsToAdd): SetGameSettingsAct
     });
 };
 
-export const setCellsConfigAction = (settings: CellConfig[]): SetCellsConfigAction => {
+export const setCellsConfig = (settings: CellConfig[]): SetCellsConfigAction => {
     return ({
         type: SET_CELLS_CONFIG,
         payload: settings
     });
 };
 
-export const setSelectedCellAction = (cell: CellConfig): SetSelectedCellAction => {
+export const setSelectedCell = (cell: CellConfig): SetSelectedCellAction => {
     return ({
         type: SET_SELECTED_CELL,
         payload: cell,
@@ -46,5 +48,10 @@ export const setSelectedCellAction = (cell: CellConfig): SetSelectedCellAction =
 
 export const setLastUpdate = (value: number): SetLastUpdateAction => ({
     type: SET_LAST_UPDATE,
+    payload: value,
+  });
+
+export const setIsBlueMove = (value: boolean): SetIsBlueMoveAction => ({
+    type: SET_IS_BLUE_MOVE,
     payload: value,
   });
