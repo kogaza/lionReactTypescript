@@ -7,6 +7,7 @@ export interface CellConfig {
     color: string;
     animal: string;
     teamName: string;
+    isSelected: boolean;
 }
 
 export const START_GAME_LOADING = 'START_GAME_LOADING';
@@ -31,8 +32,22 @@ export interface SetCellsConfigAction {
     payload: CellConfig[];
 }
 
+export const SET_SELECTED_CELL = 'SET_SELECTED_CELL';
+export interface SetSelectedCellAction {
+    type: typeof SET_SELECTED_CELL;
+    payload: CellConfig;
+}
+
+export const SET_LAST_UPDATE = 'SET_LAST_UPDATE';
+export interface SetLastUpdateAction {
+    type: typeof SET_LAST_UPDATE;
+    payload: number;
+}
+
 export type GameActionTypes =
     StartGameLoadingAction |
     StopGameLoadingAction |
     SetGameSettingsAction |
-    SetCellsConfigAction;
+    SetCellsConfigAction |
+    SetSelectedCellAction |
+    SetLastUpdateAction;

@@ -1,16 +1,21 @@
 import { useSelector } from 'react-redux';
 import './index.css';
-import { getCells } from '../../store/game/game.selectors';
-import { useSellsConfig } from '../useCellsConfig';
-import chicken from '../../images/chicken.jpeg';
-import lion from '../../images/lion.jpeg';
-import elephant from '../../images/elephant.jpeg';
-import giraffe from '../../images/giraffe.jpeg';
-import superChicken from '../../images/superChicken.jpeg';
+import { getCells, getLastUpdate } from '../../store/game/game.selectors';
+import { useSellsConfig } from '../../hooks/useSellsConfig';
+import chicken from '../../images/chicken.png';
+import lion from '../../images/lion.png';
+import elephant from '../../images/elephant.png';
+import giraffe from '../../images/giraffe.png';
+import superChicken from '../../images/superChicken.png';
+import { BoardCell } from './BoardCell';
+import { useUpdateBoard } from '../../hooks/useUpdateBoard';
 
 export const Board = () => {
-    useSellsConfig();
+    const lastUpdate = useSelector(getLastUpdate);
     const cellsList = useSelector(getCells);
+
+    useSellsConfig();
+    useUpdateBoard(lastUpdate);
 
     const addImage = (animal: string) => {
         let animalImage;
@@ -34,15 +39,13 @@ export const Board = () => {
                 break;
         }
         return animalImage;
-    }
+    };
 
     return (
         <div className='board'>
             {cellsList.map((cell, index) => {
                 return (
-                    <div key={index} className={`cell ${cell.teamName === 'blue' ? "rotate" : ""}`}>
-                        {cell.animal && <img src={addImage(cell.animal)} />}
-                    </div>
+                    <BoardCell key={index} cell={cell} index={index} addImage={addImage} />
                 )
             })}
         </div>

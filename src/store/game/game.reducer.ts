@@ -1,10 +1,14 @@
+import { defaultCell } from "../../utils/defaultCell";
+import { defaultCellsConfig } from "../../utils/defaultCellsConfig";
 import {
     GameActionTypes,
     CellConfig,
     SET_GAME_SETTINGS,
     START_GAME_LOADING,
     STOP_GAME_LOADING,
-    SET_CELLS_CONFIG
+    SET_CELLS_CONFIG,
+    SET_LAST_UPDATE,
+    SET_SELECTED_CELL
 } from "./game.types";
 
 export interface GameState {
@@ -13,6 +17,8 @@ export interface GameState {
         name: string;
     };
     cellsConfig: CellConfig[];
+    selectedCell: CellConfig;
+    lastUpdate: number;
 }
 
 export const initialGameState = {
@@ -20,7 +26,9 @@ export const initialGameState = {
     settings: {
         name: '',
     },
-    cellsConfig: [],
+    cellsConfig: defaultCellsConfig,
+    selectedCell: defaultCell,
+    lastUpdate: 0,
 }
 
 export const gameReducer = (state: GameState = initialGameState, action: GameActionTypes) => {
@@ -51,6 +59,20 @@ export const gameReducer = (state: GameState = initialGameState, action: GameAct
                 ...state,
                 cellsConfig: action.payload,
             }
+        }
+
+        case SET_SELECTED_CELL: {
+            return {
+                ...state,
+                selectedCell: action.payload,
+            }
+        }
+
+        case SET_LAST_UPDATE: {
+            return {
+                ...state,
+                lastUpdate: action.payload,
+            };
         }
 
         default:
