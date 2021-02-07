@@ -9,7 +9,8 @@ import {
     SET_CELLS_CONFIG,
     SET_LAST_UPDATE,
     SET_SELECTED_CELL,
-    SET_IS_BLUE_MOVE
+    SET_IS_BLUE_MOVE,
+    SET_POSSIBLE_MOVES
 } from "./game.types";
 
 export interface GameState {
@@ -20,6 +21,7 @@ export interface GameState {
     };
     cellsConfig: CellConfig[];
     selectedCell: CellConfig;
+    possibleMoves: number[];
     lastUpdate: number;
 }
 
@@ -31,6 +33,7 @@ export const initialGameState = {
     },
     cellsConfig: defaultCellsConfig,
     selectedCell: defaultCell,
+    possibleMoves: [],
     lastUpdate: 0,
 }
 
@@ -82,6 +85,13 @@ export const gameReducer = (state: GameState = initialGameState, action: GameAct
             return {
                 ...state,
                 isBlueMove: action.payload,
+            };
+        }
+
+        case SET_POSSIBLE_MOVES: {
+            return {
+                ...state,
+                possibleMoves: action.payload,
             };
         }
 

@@ -9,15 +9,6 @@
   background: linear-gradient(0deg, rgba(34,195,34,1) 0%, rgba(45,112,253,1) 100%);
 }
 
-.board {
-  height: 600px;
-  align-self: center;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto auto;
-  background-color: white;
-}
-
 .waiting-room {
   height: 300px;
   border: 1px solid blue;

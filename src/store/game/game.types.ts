@@ -3,11 +3,13 @@ export interface GameSettingsToAdd {
 }
 
 export interface CellConfig {
-    name: string;
+    id: number;
     color: string;
     animal: string;
     teamName: string;
+    isClickable: boolean;
     isSelected: boolean;
+    isAtRiskOfAttack: boolean;
 }
 
 export const START_GAME_LOADING = 'START_GAME_LOADING';
@@ -50,6 +52,12 @@ export interface SetIsBlueMoveAction {
     payload: boolean;
 }
 
+export const SET_POSSIBLE_MOVES = 'SET_POSSIBLE_MOVES';
+export interface SetPossibleMovesAction {
+    type: typeof SET_POSSIBLE_MOVES;
+    payload: number[];
+}
+
 export type GameActionTypes =
     StartGameLoadingAction |
     StopGameLoadingAction |
@@ -57,4 +65,5 @@ export type GameActionTypes =
     SetCellsConfigAction |
     SetSelectedCellAction |
     SetLastUpdateAction |
-    SetIsBlueMoveAction;
+    SetIsBlueMoveAction |
+    SetPossibleMovesAction;

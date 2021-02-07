@@ -10,7 +10,7 @@ export const useUpdateBoard = (lastUpdate: number) => {
 
     const setCurrentBoard = () => {
         const currentBoard = boardCells.map(cell => {
-            const isSelected = cell.name === selectedCell.name ? cell.isSelected = true : cell.isSelected = false;
+            const isSelected = cell.id === selectedCell.id ? cell.isSelected = true : cell.isSelected = false;
             return (
                 {
                     ...cell,
